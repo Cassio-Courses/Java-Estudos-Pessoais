@@ -14,6 +14,25 @@ public class EstudosPessoais {
     
 }
 class Funcoes{
-   
+        public static float soma(float num1,float num2){
+            float resultado;
+            resultado = num1 + num2;
+            return resultado;
+}
+        public static float subs(float num1,float num2){
+            float resultado;
+            resultado = num1 - num2;
+            return resultado;
+}
+        public static float multi(float num1,float num2){
+            float resultado;
+            resultado = num1 * num2;
+            return resultado;
+}
+        public static float divs(float num1,float num2){
+            float resultado;
+            resultado = num1 / num2;
+            return resultado;
+}
     }
 
