@@ -8,7 +8,7 @@ public class EstudosPessoais2 {
 }
 class PersonTest{
     private PersonTest Name;
-    public PersonTest(){
+    public PersonTest(String Name, String Test){
     
 }
     public static String helloWorld(){
