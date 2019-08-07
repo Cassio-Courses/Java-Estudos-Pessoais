@@ -11,6 +11,7 @@ public class EstudosPessoais {
         num1 = entrada.nextFloat();
         System.out.println("Digite outro numero");
         num2 = entrada.nextFloat();
+       
     }
 
 }
