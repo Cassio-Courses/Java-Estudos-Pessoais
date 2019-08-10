@@ -16,5 +16,4 @@ public class Cursoemvideo1 {
         System.out.println("O Idioma está configurado para: " + idioma.getDisplayLanguage());
                 
         }
-    
 }

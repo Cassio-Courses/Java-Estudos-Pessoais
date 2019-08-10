@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Classes;
+import java.time.Year;
 
 /**
  *
@@ -103,7 +104,8 @@ public class telaIdade extends javax.swing.JFrame {
 
     private void btnCalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcActionPerformed
         int anoNascimento = Integer.parseInt(txtAn.getValue().toString());
-        int idade = 2019 - anoNascimento;
+        int year = Integer.parseInt(Year.now().toString());
+        int idade = year - anoNascimento;
         lblIdade.setText(Integer.toString(idade));
         
     }//GEN-LAST:event_btnCalcActionPerformed
