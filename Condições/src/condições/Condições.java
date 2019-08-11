@@ -5,7 +5,9 @@ import java.util.Scanner;
 public class Condições {
     public static Scanner entrada = new Scanner(System.in); 
     public static void main(String[] args) {
-        
+        primeira();
+        }
+        public static void primeira() {
         System.out.println("Insira a nota 1");
         float n1 = entrada.nextFloat();
         System.out.println("Insira a nota 2");
@@ -15,7 +17,7 @@ public class Condições {
         if(media >= 9){
             System.out.println("Parabéns");
         }
-        
+        }
     }
     
-}
+
