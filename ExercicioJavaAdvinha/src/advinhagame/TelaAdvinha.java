@@ -94,7 +94,7 @@ public class TelaAdvinha extends javax.swing.JFrame {
     private void btnPalpiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPalpiteActionPerformed
         int palpite = Integer.parseInt((spinEscolha.getValue().toString()));
         int random = ((int) (1 + Math.random() * (6-1)));
-        String resultado = (palpite == random) ?  "Acertou" : "Errou";
+        String resultado = (palpite == random) ?  "Acertou" : "Errou, eu pensei no valor " + random;
         lblText.setText(resultado);
     }//GEN-LAST:event_btnPalpiteActionPerformed
 
