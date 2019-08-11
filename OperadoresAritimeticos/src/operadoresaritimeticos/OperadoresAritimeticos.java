@@ -15,11 +15,14 @@ public class OperadoresAritimeticos {
         System.out.println(random);
         int aleatorio = (int) (5 + Math.random() * (10 - 5)); // Método para criar numeros aleatorios inteiros
         //exemplo:
-        int min = 10;
-        int max = 12;
+        int min = 2;
+        int max = 5;
         int aleat = (int) (min + Math.random() * (max - min));
         System.out.println(aleat);
-
+        double resultado = max / min;
+        System.out.println(resultado);
+        
+        
     }
 
 }
