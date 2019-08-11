@@ -19,8 +19,7 @@ public class OperadoresAritimeticos {
         int max = 5;
         int aleat = (int) (min + Math.random() * (max - min));
         System.out.println(aleat);
-        double resultado = max / min;
-        System.out.println(resultado);
+        
         
         
     }
