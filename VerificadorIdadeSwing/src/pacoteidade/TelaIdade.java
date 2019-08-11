@@ -89,7 +89,12 @@ public class TelaIdade extends javax.swing.JFrame {
         int ano = Integer.parseInt(txtAno.getText());
         int idade = Integer.parseInt(Year.now().toString()) - ano;
         lblIdade.setText(Integer.toString(idade));
-        String situacao = (idade >= 18) ? "Maior de idade" : "Menor de Idade";
+        
+        String situacao = ((idade >= 16 && idade < 18) || (idade > 70)) ? "Voto Opcional" : "Voto Obrigatório";
+        /*
+         *Surgiu a necessidade de criar uma condição para quando a idade é menor que 16, que não é opcional
+         * nem obrigatória.
+        */
         lblSituacao.setText(situacao);
     }//GEN-LAST:event_btnCalcActionPerformed
     public static void main(String args[]) {
