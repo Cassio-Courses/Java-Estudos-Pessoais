@@ -11,7 +11,8 @@ public class OperadoresAritimeticos {
         float v = 8.3f;
         int ar = (int) Math.round(v);//ceil, floor
         System.out.println(ar);
-        double random = Math.random();
+        int random;
+        random = 1;
         System.out.println(random);
         int aleatorio = (int) (5 + Math.random() * (10 - 5)); // Método para criar numeros aleatorios inteiros
         //exemplo:
@@ -19,7 +20,8 @@ public class OperadoresAritimeticos {
         int max = 5;
         int aleat = (int) (min + Math.random() * (max - min));
         System.out.println(aleat);
-        
+        random = (int) (1 + Math.random() * (6-1));
+        System.out.println(random);
         
         
     }
