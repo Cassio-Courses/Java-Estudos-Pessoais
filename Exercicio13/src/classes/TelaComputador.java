@@ -5,6 +5,8 @@
  */
 package classes;
 
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author Cassio
@@ -81,12 +83,12 @@ public class TelaComputador extends javax.swing.JFrame {
         lblPasso.setText("1");
 
         btnCont.setText("Contar");
-
-        jList1.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public Object getElementAt(int i) { return strings[i]; }
+        btnCont.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContActionPerformed(evt);
+            }
         });
+
         jScrollPane1.setViewportView(jList1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -161,12 +163,24 @@ public class TelaComputador extends javax.swing.JFrame {
 
     private void sliFimStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliFimStateChanged
         lblFim.setText(Integer.toString(sliFim.getValue()));
-        https://youtu.be/ZYvGz1h_2MU?list=PLHz_AreHm4dkI2ZdjTwZA4mPMxWTfNSpR&t=803
     }//GEN-LAST:event_sliFimStateChanged
 
     private void sliPassoStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_sliPassoStateChanged
         lblPasso.setText(Integer.toString(sliPasso.getValue()));
     }//GEN-LAST:event_sliPassoStateChanged
+
+    private void btnContActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContActionPerformed
+        int inicio = sliInicio.getValue();
+        int fim = sliInicio.getValue();
+        int passo = sliInicio.getValue();
+        
+        DefaultListModel lista = new DefaultListModel();
+        for (int contador = inicio; contador <= fim; contador += passo){
+            lista.addElement(contador);
+            
+        }
+        jList1.setModel(lista);
+    }//GEN-LAST:event_btnContActionPerformed
 
     /**
      * @param args the command line arguments
