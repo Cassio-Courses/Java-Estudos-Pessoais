@@ -2,11 +2,21 @@ package vetores;
 
 public class Vetores {
     public static void main(String[] args) {
-        int cc = 0;
-        int n[] = {5,4,7,2,9,7,5,3,2,5,7,9,6,54,34,3,4,5,6,6,2,45,10,2,1,204,5};
-        while (cc < n.length){
+        int cc = 0; 
+       // String teste[] = {"Cassio", "Fernando", "Juninho", "Paula", "Danela"};
+        String mes[] = {"Jan", "Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", 
+                        "Set", "Out", "Nov", "Dez"};
+        int totDias[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31, 30}; 
+       /* while (cc < n.length){
             System.out.print(n[cc++] + ", ");
         }
+        cc = 0;
+        while (cc < teste.length){
+            System.out.println(teste[cc++]);
+        }*/
+       for (int i = 0; i < mes.length; i++){
+           System.out.println("O mês " + mes[i] + " possui " + totDias[i] + " dias");
+       }
     
     }
     
