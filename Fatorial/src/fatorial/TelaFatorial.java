@@ -28,7 +28,6 @@ public class TelaFatorial extends javax.swing.JFrame {
     private void initComponents() {
 
         txtValor = new javax.swing.JSpinner();
-        btnCalc = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         lblResultado = new javax.swing.JLabel();
@@ -37,11 +36,9 @@ public class TelaFatorial extends javax.swing.JFrame {
 
         txtValor.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         txtValor.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), null, null, Integer.valueOf(1)));
-
-        btnCalc.setText("Calcular Fatorial");
-        btnCalc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCalcActionPerformed(evt);
+        txtValor.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                txtValorStateChanged(evt);
             }
         });
 
@@ -60,14 +57,11 @@ public class TelaFatorial extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCalc)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel2)))
+                .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(lblResultado, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                 .addGap(14, 14, 14))
@@ -81,21 +75,19 @@ public class TelaFatorial extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtValor, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(18, 18, 18)
-                        .addComponent(btnCalc))
+                            .addComponent(jLabel2)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addComponent(lblResultado, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnCalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcActionPerformed
-        int valor = Integer.parseInt(txtValor.getValue().toString());
-        int soma = valor;
+    private void txtValorStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_txtValorStateChanged
+        long valor = Long.parseLong((txtValor.getValue().toString()));
+        long soma = valor;
         if (valor == 0) {
             lblResultado.setText("0");
         }
@@ -106,9 +98,9 @@ public class TelaFatorial extends javax.swing.JFrame {
         while (valor != 1){
             soma *= --valor;
         }
-        lblResultado.setText(Integer.toString(soma));
+        lblResultado.setText(Long.toString(soma));
         }
-    }//GEN-LAST:event_btnCalcActionPerformed
+    }//GEN-LAST:event_txtValorStateChanged
 
     /**
      * @param args the command line arguments
@@ -146,7 +138,6 @@ public class TelaFatorial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCalc;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel lblResultado;
