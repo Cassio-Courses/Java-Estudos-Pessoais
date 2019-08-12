@@ -1,9 +1,13 @@
 package pacoteidade;
-import  java.time.Year;
+
+import java.time.Year;
+
 public class TelaIdade extends javax.swing.JFrame {
+
     public TelaIdade() {
         initComponents();
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -23,6 +27,12 @@ public class TelaIdade extends javax.swing.JFrame {
         jLabel2.setText("Idade ");
 
         jLabel3.setText("Situação");
+
+        txtAno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtAnoActionPerformed(evt);
+            }
+        });
 
         btnCalc.setText("Calcular Idade");
         btnCalc.addActionListener(new java.awt.event.ActionListener() {
@@ -89,14 +99,29 @@ public class TelaIdade extends javax.swing.JFrame {
         int ano = Integer.parseInt(txtAno.getText());
         int idade = Integer.parseInt(Year.now().toString()) - ano;
         lblIdade.setText(Integer.toString(idade));
-        
-        String situacao = ((idade >= 16 && idade < 18) || (idade > 70)) ? "Voto Opcional" : "Voto Obrigatório";
-        /*
+
+        /*String situacao = ((idade >= 16 && idade < 18) || (idade > 70)) ? "Voto Opcional" : "Voto Obrigatório";
+         /*
          *Surgiu a necessidade de criar uma condição para quando a idade é menor que 16, que não é opcional
          * nem obrigatória.
-        */
+         */
+        String situacao;
+        if ((idade >= 16 && idade < 18) || (idade > 70)) {
+            situacao = "Voto opcional";
+        } else {
+            if (idade < 16) {
+                situacao = "Voto não obrigatório nem opcional";
+            } else {
+                situacao = "Voto obrigatório";
+            }
+        }
+
         lblSituacao.setText(situacao);
     }//GEN-LAST:event_btnCalcActionPerformed
+
+    private void txtAnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAnoActionPerformed
+        btnCalc.doClick();
+    }//GEN-LAST:event_txtAnoActionPerformed
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
