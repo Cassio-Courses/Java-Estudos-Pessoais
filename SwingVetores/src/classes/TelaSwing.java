@@ -5,6 +5,7 @@
  */
 package classes;
 
+import java.util.Arrays;
 import javax.swing.DefaultListModel;
 
 
@@ -17,13 +18,16 @@ public class TelaSwing extends javax.swing.JFrame {
     /**
      * Creates new form TelaSwing
      */
+    public int vetores[] = new int [10];
+    public DefaultListModel lista = new DefaultListModel();
     public TelaSwing() {
         initComponents();
-        DefaultListModel lista = new DefaultListModel();
         int cc = 0;
-        int vetores[] = {0,1,2,3,4,5,6,7,8,9};
+        int vetores[] = new int [9];
+        Arrays.fill(vetores, 0);
         while (cc < vetores.length){
-            lista.addElement(vetores[cc++]);
+            lista.addElement("[" + cc + "] -> " + vetores[cc++]); 
+            //Constructor vai criar vetor com dados zero.
         }
         listOrdem.setModel(lista);
         
@@ -39,37 +43,62 @@ public class TelaSwing extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jSpinner1 = new javax.swing.JSpinner();
+        btnAdicionar = new javax.swing.JButton();
+        btnRemover = new javax.swing.JButton();
+        btnOrdenar = new javax.swing.JButton();
+        spinValue = new javax.swing.JSpinner();
         jScrollPane1 = new javax.swing.JScrollPane();
         listOrdem = new javax.swing.JList<>();
+        lblTeste = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Adicionar");
+        btnAdicionar.setText("Adicionar");
+        btnAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAdicionarActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Remover");
+        btnRemover.setText("Remover");
+        btnRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemoverActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Ordenar");
+        btnOrdenar.setText("Ordenar");
+        btnOrdenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdenarActionPerformed(evt);
+            }
+        });
+
+        spinValue.setModel(new javax.swing.SpinnerNumberModel(0, 0, 9, 1));
 
         jScrollPane1.setViewportView(listOrdem);
+
+        lblTeste.setText("TESTE");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton3)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(spinValue, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnOrdenar)
+                            .addComponent(btnRemover)
+                            .addComponent(btnAdicionar))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(lblTeste)))
                 .addContainerGap(65, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -80,15 +109,17 @@ public class TelaSwing extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1)
+                            .addComponent(btnAdicionar)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(3, 3, 3)
-                                .addComponent(jSpinner1)))
+                                .addComponent(spinValue)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
+                        .addComponent(btnRemover)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3)))
-                .addContainerGap(138, Short.MAX_VALUE))
+                        .addComponent(btnOrdenar)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
+                .addComponent(lblTeste)
+                .addGap(102, 102, 102))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -110,6 +141,25 @@ public class TelaSwing extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
+        int numero = Integer.parseInt(spinValue.getValue().toString());
+        lista.setElementAt("[" + numero + "] -> " + vetores[numero],numero);
+        lblTeste.setText(Integer.toString(numero));
+        listOrdem.setModel(lista);
+        /* Ao estudar classes, crie uma classe e um método que permita
+         * A atualização do modelo de forma mais prática.
+        */
+        
+    }//GEN-LAST:event_btnAdicionarActionPerformed
+
+    private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
+        int numero = Integer.parseInt(spinValue.getValue().toString());
+    }//GEN-LAST:event_btnRemoverActionPerformed
+
+    private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
+        int numero = Integer.parseInt(spinValue.getValue().toString());
+    }//GEN-LAST:event_btnOrdenarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -147,12 +197,13 @@ public class TelaSwing extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton btnAdicionar;
+    private javax.swing.JButton btnOrdenar;
+    private javax.swing.JButton btnRemover;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JLabel lblTeste;
     private javax.swing.JList<String> listOrdem;
+    private javax.swing.JSpinner spinValue;
     // End of variables declaration//GEN-END:variables
 }
