@@ -5,6 +5,7 @@
  */
 package classes;
 
+import java.awt.event.KeyEvent;
 import java.util.Arrays;
 import javax.swing.DefaultListModel;
 
@@ -17,9 +18,10 @@ public class TelaSwing extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaSwing
-     */
+    */
     public int vetores[] = new int [10];
     public DefaultListModel lista = new DefaultListModel();
+    public int selecionado = 0;
     public TelaSwing() {
         initComponents();
         int cc = 0;
@@ -29,7 +31,7 @@ public class TelaSwing extends javax.swing.JFrame {
             lista.addElement("[" + cc + "] -> " + vetores[cc++]); 
             //Constructor vai criar vetor com dados zero.
         }
-        listOrdem.setModel(lista);
+        
         
     }
 
@@ -76,35 +78,58 @@ public class TelaSwing extends javax.swing.JFrame {
 
         spinValue.setModel(new javax.swing.SpinnerNumberModel(0, 0, 9, 1));
 
+        listOrdem.setModel(lista);
+        listOrdem.setToolTipText("");
+        listOrdem.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                listOrdemMouseClicked(evt);
+            }
+        });
+        listOrdem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                listOrdemKeyPressed(evt);
+            }
+        });
+        listOrdem.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                listOrdemValueChanged(evt);
+            }
+        });
         jScrollPane1.setViewportView(listOrdem);
 
-        lblTeste.setText("TESTE");
+        lblTeste.setText("0");
+        lblTeste.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                lblTestePropertyChange(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(spinValue, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(spinValue, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(29, 29, 29)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnOrdenar)
-                            .addComponent(btnRemover)
-                            .addComponent(btnAdicionar))
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(lblTeste)))
+                    .addComponent(btnOrdenar)
+                    .addComponent(btnRemover)
+                    .addComponent(btnAdicionar))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(65, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblTeste)
+                .addGap(73, 73, 73))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(8, 8, 8)
+                .addContainerGap()
+                .addComponent(lblTeste)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -117,9 +142,7 @@ public class TelaSwing extends javax.swing.JFrame {
                         .addComponent(btnRemover)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btnOrdenar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 20, Short.MAX_VALUE)
-                .addComponent(lblTeste)
-                .addGap(102, 102, 102))
+                .addContainerGap(118, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -143,23 +166,53 @@ public class TelaSwing extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdicionarActionPerformed
-        int numero = Integer.parseInt(spinValue.getValue().toString());
-        lista.setElementAt("[" + numero + "] -> " + vetores[numero],numero);
-        lblTeste.setText(Integer.toString(numero));
-        listOrdem.setModel(lista);
-        /* Ao estudar classes, crie uma classe e um método que permita
-         * A atualização do modelo de forma mais prática.
-        */
-        
+        vetores[selecionado] = Integer.parseInt(spinValue.getValue().toString());
+        lista.removeAllElements();
+        int cc = 0;
+        while (cc < vetores.length){
+            lista.addElement("[" + cc + "] -> " + vetores[cc++]);
+        }
     }//GEN-LAST:event_btnAdicionarActionPerformed
 
     private void btnRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemoverActionPerformed
-        int numero = Integer.parseInt(spinValue.getValue().toString());
+        vetores[selecionado] = 0;
+        lista.removeAllElements();
+        int cc = 0;
+        while(cc < vetores.length){
+            lista.addElement("[" + cc + "] -> " + vetores[cc++]);
+        }
     }//GEN-LAST:event_btnRemoverActionPerformed
 
     private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
-        int numero = Integer.parseInt(spinValue.getValue().toString());
+        Arrays.sort(vetores);
+        lista.removeAllElements();
+        int cc = 0;
+        while(cc < vetores.length){
+            lista.addElement("[" + cc + "] -> " + vetores[cc++]);
+        }
     }//GEN-LAST:event_btnOrdenarActionPerformed
+
+    private void listOrdemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listOrdemMouseClicked
+        selecionado = listOrdem.getSelectedIndex();
+        lblTeste.setText("[" + selecionado + "]");
+    }//GEN-LAST:event_listOrdemMouseClicked
+
+    private void listOrdemValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listOrdemValueChanged
+        selecionado = listOrdem.getSelectedIndex();
+        lblTeste.setText("[" + selecionado + "]");
+    }//GEN-LAST:event_listOrdemValueChanged
+
+    private void listOrdemKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_listOrdemKeyPressed
+        if(evt.getKeyCode() == KeyEvent.VK_ENTER){
+            btnAdicionar.doClick();
+        }
+    }//GEN-LAST:event_listOrdemKeyPressed
+
+    private void lblTestePropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblTestePropertyChange
+        if(selecionado == -1){
+            selecionado = 0;
+        }
+    }//GEN-LAST:event_lblTestePropertyChange
 
     /**
      * @param args the command line arguments
