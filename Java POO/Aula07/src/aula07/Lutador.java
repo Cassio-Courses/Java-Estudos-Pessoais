@@ -1,15 +1,7 @@
 package aula07;
 
-import java.util.logging.Logger;
+public final class Lutador {
 
-public class Lutador {
-
-    /**
-     * Nome, Nacionalidade, Idade, Altura, Peso, Categoria, Vitorias, Derrotas,
-     * Empates métodos apresentar(), status(), ganharLuta(),perderLuta(),
-     * empatarLuta()
-     *
-     */
     private String nome, nacionalidade, categoria;
     private int idade, vitorias, derrotas, empates;
     private float altura, peso;
@@ -36,8 +28,8 @@ public class Lutador {
     //Métodos
     public void apresentar() {
         System.out.println("---------------APRESENTAÇÃO---------------");
-        System.out.println("Este é o lutador " + this.nome + " e " + this.idade + " anos");
-        System.out.println("De peso " + this.peso + " kgs e altura: " + this.altura);;
+        System.out.println("Este é o lutador " + this.nome + " de " + this.idade + " anos");
+        System.out.println("Pesando " + this.peso + " kgs e altura: " + this.altura);
         System.out.println("Nacionalidade: " + this.nacionalidade + " e categoria: " + this.categoria);
         System.out.println("Vitórias: " + this.vitorias + " Derrotas: " + this.derrotas + " e Empates: " + this.empates);
         System.out.println("------------------------------------------");
@@ -129,21 +121,22 @@ public class Lutador {
 
     public void setPeso(float peso) {
         this.peso = peso;
-        if (peso < 52.2) {
-            setCategoria("Inválido");
-        } else if (peso <= 70.3) {
-            setCategoria("Leve");
-        } else if (peso <= 83.9) {
-            setCategoria("Médio");
-        } else if (peso <= 120.2) {
-            setCategoria("Pesado");
-        } else {
-            setCategoria("Inválido");
-        }
+        setCategoria();
+
     }
 
-    private void setCategoria(String categoria) {
-        this.categoria = categoria;
+    private void setCategoria() {
+        if (this.peso < 52.2) {
+            this.categoria = ("Inválido");
+        } else if (this.peso <= 70.3) {
+            this.categoria = ("Leve");
+        } else if (this.peso <= 83.9) {
+            this.categoria = ("Médio");
+        } else if (this.peso <= 120.2) {
+            this.categoria = ("Pesado");
+        } else {
+            this.categoria = ("Inválido");
+        }
 
     }
 }
