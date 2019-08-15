@@ -30,9 +30,6 @@ public class ContaBanco {
     }
 
     public String fecharConta() {
-        /**
-         * Regras de negócio pra fechar conta não pode ter dinheiro, nem débito.
-         */
         if (isStatus() == false) {
             return "Não foi possível fechar a conta pois ela não está aberta";
         } else if (getSaldo() > 0) {
@@ -45,11 +42,7 @@ public class ContaBanco {
         }
     }
 
-    /**
-     * sacar() precisa estar aberta e precisa ter saldo para saque.
-     * pagarMensal() ao ser chamado, cliente que tem conta corrente pagará 12
-     * reais
-     */
+
     public String depositar(float valor) {
         if (isStatus()) {
             setSaldo(getSaldo() + valor);
@@ -71,10 +64,7 @@ public class ContaBanco {
         }
     }
 
-    /**
-     * pagarMensal() ao ser chamado, cliente que tem conta corrente pagará 12
-     * reais cliente que tem poupança pagará 20 reais todos métodos publicos.
-     */
+    
     public String pagarMensal() {
         if ("CC".equals(getTipo())) {
             this.sacar(12f);
