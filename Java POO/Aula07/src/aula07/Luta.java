@@ -1,5 +1,7 @@
 package aula07;
 
+import java.util.Random;
+
 public class Luta {
     public static int lutas;
     private Lutador desafiado;
@@ -23,8 +25,8 @@ public class Luta {
         if (isAprovada()) {
             //desafiado.apresentar();
             //desafiante.apresentar();
-            int vencedor = (int) (0 + Math.random() * (0 + 3));
-            switch (vencedor) {
+            Random vencedor = new Random(3);
+            switch (Integer.parseInt(vencedor.toString())) {
                 case 0:
                     desafiado.empatarLuta();
                     desafiante.empatarLuta();
