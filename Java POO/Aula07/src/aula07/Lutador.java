@@ -1,6 +1,6 @@
 package aula07;
 
-public final class Lutador {
+public class Lutador {
 
     private String nome, nacionalidade, categoria;
     private int idade, vitorias, derrotas, empates;
@@ -119,7 +119,7 @@ public final class Lutador {
         return peso;
     }
 
-    public void setPeso(float peso) {
+    public final void setPeso(float peso) {
         this.peso = peso;
         setCategoria();
 
