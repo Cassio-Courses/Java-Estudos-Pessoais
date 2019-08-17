@@ -9,7 +9,7 @@ public class Livro implements Publicacao {
     //Construtor
 
     public Livro(String titulo, String autor, int totPaginas, Pessoa leitor) {
-        this.titulo = titulo;
+        setTitulo(titulo);
         this.autor = autor;
         this.totPaginas = totPaginas;
         this.pagAtual = 0;
@@ -19,20 +19,23 @@ public class Livro implements Publicacao {
 
     //Métodos Especiais
     public void detalhes() {
-        System.out.println("Titulo livro: " + getTitulo());
+        System.out.println("_____________________________DETALHES_____________________________");
+        System.out.println("Titulo do livro: " + getTitulo());
         System.out.println("Autor: " + getAutor());
         System.out.println("Total de Páginas: " + getTotPaginas());
         System.out.println("Página Atual: " + getPagAtual());
         if (isAberto()) {
-            System.out.println("Livro está Aberto");
+            if (getPagAtual() == 0) {
+                System.out.println("O livro está aberto");
+            }
         } else {
-            System.out.println("Livro está Fechado");
+            System.out.println("O  livro está Fechado");
         }
-        System.out.println("Leitor: " + getLeitor());
+        System.out.println("Leitor: " + this.leitor.getNome());
 
     }
-
     //Getters and Setters
+
     public String getTitulo() {
         return titulo;
     }
@@ -85,10 +88,14 @@ public class Livro implements Publicacao {
     @Override
     public void abrir() {
         if (isAberto()) {
-            setAberto(true);
-            System.out.println("Livro foi aberto");
+            System.out.println("O livro já está aberto!");
         } else {
-            System.out.println("Livro já está aberto");
+            setAberto(true);
+            if (getPagAtual() == 0) {
+                System.out.println(this.leitor.getNome() + " abriu o livro");
+            } else {
+                System.out.println(this.leitor.getNome() + " abriu o livro na página: " + getPagAtual());
+            }
         }
 
     }
@@ -97,9 +104,9 @@ public class Livro implements Publicacao {
     public void fechar() {
         if (isAberto()) {
             setAberto(false);
-            System.out.println("Livro foi fechado");
+            System.out.println("Você fechou o livro. marcou a página: " + getPagAtual());
         } else {
-            System.out.println("Livro já está fechado");
+            System.out.println("Livro já está fechado!");
         }
     }
 
@@ -111,21 +118,31 @@ public class Livro implements Publicacao {
 
     @Override
     public void avancarPag() {
-        if (pagAtual >= totPaginas) {
-            System.out.println("Você já folheou todas as páginas do livro");
+        if (isAberto()) {
+
+            if (pagAtual >= totPaginas) {
+                System.out.println("Você já folheou todas as páginas do livro");
+            } else {
+                setPagAtual(getPagAtual() + 1);
+                System.out.println("Você passou para pagina: " + getPagAtual());
+            }
         } else {
-            setPagAtual(getPagAtual() + 1);
-            System.out.println("Você passou para pagina: " + getPagAtual());
+            System.out.println("O livro está fechado, abra-o para folhear.");
         }
     }
 
     @Override
     public void voltarPag() {
-        if (pagAtual <= 0) {
-            System.out.println("Não há páginas antes dessa.");
+        if (isAberto()) {
+            if (pagAtual <= 0) {
+                System.out.println("Não há páginas antes dessa.");
+            } else {
+                setPagAtual(getPagAtual() - 1);
+                System.out.println("Você voltou para página: " + getPagAtual());
+            }
         } else {
-            setPagAtual(getPagAtual() - 1);
-            System.out.println("Você voltou para página: " + getPagAtual());
+            System.out.println("O livro está fechado, abra-o para folhear.");
         }
+
     }
 }
