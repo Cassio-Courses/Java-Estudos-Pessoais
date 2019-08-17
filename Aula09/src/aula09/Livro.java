@@ -109,10 +109,19 @@ public class Livro implements Publicacao {
             System.out.println("Livro já está fechado!");
         }
     }
-
+    
     @Override
-    public void folhear() {
-        System.out.println("Título: " + getTitulo() + "\n" + "Páginas: " + getTotPaginas());
+    public void folhear(int pagina) {
+        if (isAberto()) {
+            if (pagina <= this.totPaginas && pagina >= 0) {
+                setPagAtual(pagina);
+            } else {
+                System.out.println("Numero de página escolhido inválido, verifique o total de págiinas.");
+            }
+
+        } else {
+            System.out.println("Não está aberto");
+        }
 
     }
 

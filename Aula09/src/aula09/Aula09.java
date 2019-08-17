@@ -7,16 +7,12 @@ public class Aula09 {
         Livro l1 = new Livro("A volta dos que não foram", "Juninho", 10, p1);
         p1.fazerAniver();
         l1.abrir();
-        l1.abrir();
-        l1.fechar();
-        l1.fechar();
-        for (int c = 0; c <= 12; c++) {
-            if (c == 1) {
-                l1.abrir();
-            }
-            l1.voltarPag();
-        }
-        l1.folhear();
+        l1.folhear(9);
+        l1.detalhes();
+        l1.folhear(12);
+        l1.detalhes();
+        l1.folhear(-5);
+        l1.detalhes();
 
     }
 
