@@ -112,7 +112,7 @@ public class Livro implements Publicacao {
 
     @Override
     public void folhear() {
-        System.out.println(getTitulo() + "\n" + getTotPaginas());
+        System.out.println("Título: " + getTitulo() + "\n" + "Páginas: " + getTotPaginas());
 
     }
 

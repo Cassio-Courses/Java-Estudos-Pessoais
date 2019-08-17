@@ -12,10 +12,11 @@ public class Aula09 {
             if(c == 1){
                 l1.abrir();
             }
-            l1.avancarPag();
+            l1.voltarPag();
         }
-        l1.detalhes();
+        l1.folhear();
         
     }
+
     
 }
