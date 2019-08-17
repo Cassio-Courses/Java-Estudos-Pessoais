@@ -8,16 +8,31 @@ public class Livro implements Publicacao {
     private Pessoa leitor;
     //Construtor
 
-    public Livro(String titulo, String autor, int totPaginas, int pagAtual, boolean aberto, Pessoa leitor) {
+    public Livro(String titulo, String autor, int totPaginas, Pessoa leitor) {
         this.titulo = titulo;
         this.autor = autor;
         this.totPaginas = totPaginas;
-        this.pagAtual = pagAtual;
-        this.aberto = aberto;
+        this.pagAtual = 0;
+        this.aberto = false;
         this.leitor = leitor;
     }
-    //Getters and Setters
 
+    //Métodos Especiais
+    public void detalhes() {
+        System.out.println("Titulo livro: " + getTitulo());
+        System.out.println("Autor: " + getAutor());
+        System.out.println("Total de Páginas: " + getTotPaginas());
+        System.out.println("Página Atual: " + getPagAtual());
+        if (isAberto()) {
+            System.out.println("Livro está Aberto");
+        } else {
+            System.out.println("Livro está Fechado");
+        }
+        System.out.println("Leitor: " + getLeitor());
+
+    }
+
+    //Getters and Setters
     public String getTitulo() {
         return titulo;
     }
@@ -66,34 +81,51 @@ public class Livro implements Publicacao {
         this.leitor = leitor;
     }
 
-    //Métodos Especiais
-    public void detalhes() {
-
-    }
-
     //Interface Publicacao
     @Override
     public void abrir() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (isAberto()) {
+            setAberto(true);
+            System.out.println("Livro foi aberto");
+        } else {
+            System.out.println("Livro já está aberto");
+        }
+
     }
 
     @Override
     public void fechar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (isAberto()) {
+            setAberto(false);
+            System.out.println("Livro foi fechado");
+        } else {
+            System.out.println("Livro já está fechado");
+        }
     }
 
     @Override
     public void folhear() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        System.out.println(getTitulo() + "\n" + getTotPaginas());
+
     }
 
     @Override
     public void avancarPag() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (pagAtual >= totPaginas) {
+            System.out.println("Você já folheou todas as páginas do livro");
+        } else {
+            setPagAtual(getPagAtual() + 1);
+            System.out.println("Você passou para pagina: " + getPagAtual());
+        }
     }
 
     @Override
     public void voltarPag() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (pagAtual <= 0) {
+            System.out.println("Não há páginas antes dessa.");
+        } else {
+            setPagAtual(getPagAtual() - 1);
+            System.out.println("Você voltou para página: " + getPagAtual());
+        }
     }
 }

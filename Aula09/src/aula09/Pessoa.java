@@ -8,6 +8,7 @@ public class Pessoa {
 
     //Métodos especiais
     public void fazerAniver() {
+        setIdade(getIdade() + 1);
 
     }
     //Constructors
