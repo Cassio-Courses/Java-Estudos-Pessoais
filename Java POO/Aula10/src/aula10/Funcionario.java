@@ -4,12 +4,22 @@ public class Funcionario extends Pessoa {
 
     private String setor;
     private boolean trabalhando;
+
     //Métodos especiais
     public void mudarTrabalho() {
         if (isTrabalhando()) {
             setTrabalhando(false);
         } else {
             setTrabalhando(true);
+        }
+    }
+
+    public String detalhes() {
+        if (isTrabalhando()) {
+            return "Funcionario: " + this.getNome() + "setor: " + setor + ", trabalhando";
+
+        }else{
+            return "Funcionario: " + this.getNome() + "setor: " + setor + ", Folga";
         }
     }
 
