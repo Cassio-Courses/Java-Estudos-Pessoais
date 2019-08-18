@@ -6,6 +6,11 @@ public class Funcionario extends Pessoa {
     private boolean trabalhando;
 
     //Métodos especiais
+
+    /**
+     * Caso trabalho seja true, será setado para falso.
+     * Caso trabalho seja falso, será setado para true.
+     */
     public void mudarTrabalho() {
         if (isTrabalhando()) {
             setTrabalhando(false);
@@ -17,10 +22,10 @@ public class Funcionario extends Pessoa {
     @Override
     public String toString() {
         if (isTrabalhando()) {
-            return "Funcionario: " + this.getNome() + "setor: " + setor + ", trabalhando";
+            return "Funcionario: " + this.getNome() + " setor: " + setor + ", trabalhando";
 
         } else {
-            return "Funcionario: " + this.getNome() + "setor: " + setor + ", Folga";
+            return "Funcionario: " + this.getNome() + " setor: " + setor + ", Folga";
         }
     }
 

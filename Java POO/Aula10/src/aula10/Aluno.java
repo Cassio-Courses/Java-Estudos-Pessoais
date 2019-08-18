@@ -6,6 +6,10 @@ public class Aluno extends Pessoa {
     private String curso;
 
     //Métodos especiais
+
+    /**
+     * Seta matricula 0
+     */
     public void cancelarMatr() {
         setMatr(0);
     }
