@@ -10,8 +10,13 @@ public class Aluno extends Pessoa {
         setMatr(0);
     }
 
+    @Override
+    public String toString() {
+        return "Aluno{" + "matr=" + matr + ", curso=" + curso + '}';
+    }
+
     //Método construtor
-    public Aluno(int matr, String curso, String nome, int idade, char sexo) {
+    public Aluno(String nome, int idade, char sexo, int matr, String curso) {
         super(nome, idade, sexo);
         this.matr = matr;
         this.curso = curso;

@@ -11,13 +11,18 @@ public class Professor extends Pessoa {
     }
     //Método construtor
 
-    public Professor(String especialidade, float salario, String nome, int idade, char sexo) {
+    public Professor(String nome, int idade, char sexo, String especialidade, float salario) {
         super(nome, idade, sexo);
         this.especialidade = especialidade;
         this.salario = salario;
     }
-    //Getters and Setters
 
+    @Override
+    public String toString() {
+        return "Professor{" + "especialidade=" + especialidade + ", salario=" + salario + '}';
+    }
+
+    //Getters and Setters
     public String getEspecialidade() {
         return especialidade;
     }

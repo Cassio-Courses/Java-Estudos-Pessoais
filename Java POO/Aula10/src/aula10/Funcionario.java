@@ -14,17 +14,18 @@ public class Funcionario extends Pessoa {
         }
     }
 
-    public String detalhes() {
+    @Override
+    public String toString() {
         if (isTrabalhando()) {
             return "Funcionario: " + this.getNome() + "setor: " + setor + ", trabalhando";
 
-        }else{
+        } else {
             return "Funcionario: " + this.getNome() + "setor: " + setor + ", Folga";
         }
     }
 
     //Método construtor
-    public Funcionario(String setor, boolean trabalhando, String nome, int idade, char sexo) {
+    public Funcionario(String nome, int idade, char sexo, String setor, boolean trabalhando) {
         super(nome, idade, sexo);
         this.setor = setor;
         this.trabalhando = trabalhando;

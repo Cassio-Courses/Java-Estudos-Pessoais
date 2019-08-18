@@ -1,15 +1,20 @@
 package aula10;
+
 public class Pessoa {
+
     private String nome;
     private int idade;
     private char sexo;
+
     //Métodos especiais
-    public void fazerAniv(){
+    public void fazerAniv() {
         setIdade(getIdade() + 1);
     }
     //Constructor
 
-    public Pessoa() {
+    @Override
+    public String toString() {
+        return "Pessoa{" + "nome=" + nome + ", idade=" + idade + ", sexo=" + sexo + '}';
     }
 
     public Pessoa(String nome, int idade, char sexo) {
@@ -42,5 +47,5 @@ public class Pessoa {
     public void setSexo(char sexo) {
         this.sexo = sexo;
     }
-    
+
 }
