@@ -13,6 +13,9 @@ public class Aluno extends Pessoa {
     public void cancelarMatr() {
         setMatr(0);
     }
+    public void pagarMensalidade(){
+        System.out.println("Pagou mensalidade");
+    }
 
     @Override
     public String toString() {
