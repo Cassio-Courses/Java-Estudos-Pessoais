@@ -1,10 +1,10 @@
 package aula14;
 
 public interface AcoesVideo {
-
-    public abstract void play();
-
-    public abstract void pause();
-
-    public abstract void like();
+    //Interface já é abstract
+    public void play();
+    //Interface já é abstract
+    public void pause();
+    //Interface já é abstract
+    public void like();
 }
