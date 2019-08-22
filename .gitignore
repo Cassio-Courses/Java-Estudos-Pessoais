@@ -133,7 +133,6 @@ Java POO/Aula12/nbproject/genfiles.properties
 Java POO/Aula12/nbproject/build-impl.xml
 Java POO/Aula12/manifest.mf
 Java POO/Aula12/build.xml
-<<<<<<< HEAD
 /Java Basico/Devaneios/nbproject/private/
 /Java Basico/Devaneios/build/
 /Java Basico/Devaneios/dist/
@@ -143,5 +142,5 @@ Java POO/Aula12/build.xml
 /Java Basico/ForLaco/build/
 /Java Basico/LacoEnquanto/nbproject/private/
 /Java Basico/LacoRepita/nbproject/private/
-=======
->>>>>>> parent of 7729c87... Update .gitignore
+
+
