@@ -4,9 +4,6 @@ public class Ave extends Animal {
 
     private String corPena;
 
-    public Ave() {
-    }
-
     @Override
     public void locomover() {
         System.out.println("Voando");
@@ -25,4 +22,37 @@ public class Ave extends Animal {
     public void fazerNinho() {
         System.out.println("Construiu um ninho");
     }
+
+    public String getCorPena() {
+        return corPena;
+    }
+
+    public void setCorPena(String corPena) {
+        this.corPena = corPena;
+    }
+
+    public double getPeso() {
+        return peso;
+    }
+
+    public void setPeso(double peso) {
+        this.peso = peso;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public int getMembros() {
+        return membros;
+    }
+
+    public void setMembros(int membros) {
+        this.membros = membros;
+    }
+
 }
