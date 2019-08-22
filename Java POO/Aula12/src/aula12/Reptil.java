@@ -4,6 +4,9 @@ public class Reptil extends Animal {
 
     private String corEscama;
 
+    public Reptil() {
+    }
+
     @Override
     public void locomover() {
         System.out.println("Rastejaqndo");

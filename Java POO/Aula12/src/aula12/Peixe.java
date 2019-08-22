@@ -4,6 +4,9 @@ public class Peixe extends Animal {
 
     private String corEscama;
 
+    public Peixe() {
+    }
+
     @Override
     public void locomover() {
         System.out.println("Nadando");

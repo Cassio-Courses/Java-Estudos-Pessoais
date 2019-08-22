@@ -4,6 +4,9 @@ public class Ave extends Animal {
 
     private String corPena;
 
+    public Ave() {
+    }
+
     @Override
     public void locomover() {
         System.out.println("Voando");
