@@ -8,7 +8,8 @@ public class Aula12 {
         Reptil r = new Reptil("Red", 20, 4, 8);
         Peixe p = new Peixe("Pink", 20, 4, 2);
         Ave a = new Ave("Orange", 30, 14, 2);
-        
+        Canguru c = new Canguru();
+        c.locomover();
     }
 
 }

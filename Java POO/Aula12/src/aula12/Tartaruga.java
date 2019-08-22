@@ -1,5 +1,5 @@
 package aula12;
 
-public class Tartaruga {
+public class Tartaruga extends Mamifero {
 
 }

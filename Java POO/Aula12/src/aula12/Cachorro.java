@@ -1,5 +1,5 @@
 package aula12;
 
-public class Cachorro {
+public class Cachorro extends Mamifero {
 
 }

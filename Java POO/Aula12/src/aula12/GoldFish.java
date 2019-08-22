@@ -1,5 +1,5 @@
 package aula12;
 
-public class GoldFish {
+public class GoldFish extends Mamifero {
 
 }
