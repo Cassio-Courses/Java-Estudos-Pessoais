@@ -155,6 +155,7 @@ Java POO/Aula14/manifest.mf
 Java POO/Aula14/build.xml
 /Java POO/Aula14/build/
 /Java POO/Aula14/dist/
+/Java POO/Aula15/nbproject/private/
 Java POO/Aula15/build.xml
 Java POO/Aula15/manifest.mf
 Java POO/Aula15/nbproject/build-impl.xml
@@ -162,3 +163,7 @@ Java POO/Aula15/nbproject/genfiles.properties
 Java POO/Aula15/nbproject/private/private.properties
 Java POO/Aula15/nbproject/project.properties
 Java POO/Aula15/nbproject/project.xml
+Java POO/Aula15/nbproject/project.properties
+Java POO/Aula15/nbproject/project.xml
+/Java POO/Aula15/build/
+/Java POO/Aula15/dist/
