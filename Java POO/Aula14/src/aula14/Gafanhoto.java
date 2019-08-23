@@ -11,6 +11,11 @@ public class Gafanhoto extends Pessoa {
         this.totAssistindo = 0;
     }
 
+    @Override
+    public String toString() {
+        return super.toString() + "Gafanhoto{" + "login=" + login + ", totAssistindo=" + totAssistindo + '}';
+    }
+
     public void viuMaisUm() {
         setTotAssistindo(getTotAssistindo() + 1);
     }

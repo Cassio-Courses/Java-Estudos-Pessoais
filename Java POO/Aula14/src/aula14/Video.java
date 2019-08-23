@@ -33,7 +33,7 @@ public class Video implements AcoesVideo {
 
     @Override
     public void like() {
-        setCurtidas(getCurtidas() + 1);
+        this.curtidas++;
     }
 
     public String getTitulo() {

@@ -7,6 +7,11 @@ public class Pessoa {
     protected int idade;
     protected float experiencia;
 
+    @Override
+    public String toString() {
+        return "Pessoa{" + "nome=" + nome + ", sexo=" + sexo + ", idade=" + idade + ", experiencia=" + experiencia + '}';
+    }
+
     public Pessoa(String nome, char sexo, int idade) {
         this.nome = nome;
         this.sexo = sexo;
