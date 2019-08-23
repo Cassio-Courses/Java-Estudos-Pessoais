@@ -6,6 +6,21 @@ public class Video implements AcoesVideo {
     private boolean reproduzindo;
     private int visualizacoes, avaliacao, curtidas;
 
+    public Video(String titulo) {
+        this.titulo = titulo;
+        this.reproduzindo = false;
+        this.visualizacoes = 0;
+        this.avaliacao = 0;
+        this.curtidas = 0;
+    }
+
+    @Override
+    public String toString() {
+        return "Video{" + "titulo=" + titulo + ", reproduzindo=" + reproduzindo
+                + ", visualizacoes=" + visualizacoes + ", avaliacao="
+                + avaliacao + ", curtidas=" + curtidas + '}';
+    }
+
     @Override
     public void play() {
         setReproduzindo(true);

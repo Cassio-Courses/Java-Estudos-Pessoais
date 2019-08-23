@@ -1,9 +1,15 @@
 package aula14;
 
-public class Gafanhoto {
+public class Gafanhoto extends Pessoa {
 
     private String login;
     private int totAssistindo;
+
+    public Gafanhoto(String login, String nome, char sexo, int idade) {
+        super(nome, sexo, idade);
+        this.login = login;
+        this.totAssistindo = 0;
+    }
 
     public void viuMaisUm() {
         setTotAssistindo(getTotAssistindo() + 1);

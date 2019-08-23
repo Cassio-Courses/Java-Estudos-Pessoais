@@ -7,6 +7,16 @@ public class Pessoa {
     protected int idade;
     protected float experiencia;
 
+    public Pessoa(String nome, char sexo, int idade) {
+        this.nome = nome;
+        this.sexo = sexo;
+        this.idade = idade;
+
+    }
+
+    public Pessoa() {
+    }
+
     protected void GanharExp() {
         setExperiencia(getExperiencia() + 10);
     }
